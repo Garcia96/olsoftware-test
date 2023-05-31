@@ -12,8 +12,8 @@ const LoginForm = () => {
   const handleLogin = async (event) => {
     event.preventDefault();
     const response = await loginService.login(username, pass);
-    if (response.data.length) {
-      localStorage.setItem("user", btoa(JSON.stringify(response.data[0])));
+    if (response.length) {
+      localStorage.setItem("user", btoa(JSON.stringify(response[0])));
       setUsername("");
       setPass("");
       navigate("/");

@@ -14,8 +14,8 @@ const ReleaseResume = () => {
     const fetch = async () => {
       const response = await DashboardService.getReleaseResumeData();
       if (response) {
-        setReleaseResumeData(response.data);
-        setChartData(dataChart(response.data));
+        setReleaseResumeData(response);
+        setChartData(dataChart(response));
       }
     };
     fetch();
@@ -24,12 +24,12 @@ const ReleaseResume = () => {
 
   const dataChart = (data) => {
     return {
-      labels: data?.top_projects.map((m) => m.name),
+      labels: data?.topProjects.map((m) => m.name),
       datasets: [
         {
           label: "Proyectos",
           fill: false,
-          data: data?.top_projects.map((m) => m.porcentaje),
+          data: data?.topProjects.map((m) => m.porcentaje),
           tension: 0.5,
         },
       ],
@@ -42,7 +42,7 @@ const ReleaseResume = () => {
         <Card.Body>
           <Card.Title>Avance de proyectos</Card.Title>
           <p className="description">Reportes de entrega</p>
-          {releaseResumeData?.top_projects && <Bar data={chartData} />}
+          {releaseResumeData?.topProjects && <Bar data={chartData} />}
         </Card.Body>
       </Card>
     </section>

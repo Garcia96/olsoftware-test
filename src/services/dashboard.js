@@ -1,25 +1,26 @@
 import axios from "axios";
+import { snakeToCamelMiddleware } from "./snakeToCamelMiddleware";
 
 const baseUrl = "http://localhost:3004";
 
 const getDashboardCards = async () => {
   const data = await axios.get(`${baseUrl}/dashboard_cards`);
-  return data;
+  return snakeToCamelMiddleware(data);
 };
 
 const getCpuReportData = async () => {
   const data = await axios.get(`${baseUrl}/cpu_report`);
-  return data;
+  return snakeToCamelMiddleware(data);
 };
 
 const getCommitsReportData = async () => {
   const data = await axios.get(`${baseUrl}/report_commits`);
-  return data;
+  return snakeToCamelMiddleware(data);
 };
 
 const getReleaseResumeData = async () => {
   const data = await axios.get(`${baseUrl}/release_resume`);
-  return data;
+  return snakeToCamelMiddleware(data);
 };
 
 export {

@@ -1,10 +1,14 @@
 import React from "react";
+import Button from "react-bootstrap/Button";
+import "./ProjectsPage.css";
+import { CustomTableComponent } from "../../components/table/CustomTableComponent";
 
 function ProjectsPage() {
   return (
-    <React.Fragment>
-      <h1>ProjectsPage</h1>
-    </React.Fragment>
+    <section className="projects-container">
+      <Button>Registrar Proyecto</Button>
+      <CustomTableComponent />
+    </section>
   );
 }
 

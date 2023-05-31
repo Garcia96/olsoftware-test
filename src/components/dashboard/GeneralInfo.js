@@ -9,7 +9,7 @@ function GeneralInfo() {
     const fetch = async () => {
       const response = await DashboardService.getDashboardCards();
       if (response) {
-        setCardsInfo(response.data);
+        setCardsInfo(response);
       }
     };
     fetch();
@@ -23,11 +23,11 @@ function GeneralInfo() {
       </div>
       <div>
         <span>Incidentes registradas</span>
-        <p>{cardsInfo?.peding_nc}</p>
+        <p>{cardsInfo?.pedingNc}</p>
       </div>
       <div>
         <span>Error de despliegue</span>
-        <p>{cardsInfo?.errors_deploy}</p>
+        <p>{cardsInfo?.errorsDeploy}</p>
       </div>
     </section>
   );

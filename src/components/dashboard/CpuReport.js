@@ -15,8 +15,8 @@ const CpuReport = () => {
     const fetch = async () => {
       const response = await DashboardService.getCpuReportData();
       if (response) {
-        setCpuReportData(response.data);
-        setChartData(dataChart(response.data));
+        setCpuReportData(response);
+        setChartData(dataChart(response));
       }
     };
     fetch();

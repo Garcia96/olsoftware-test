@@ -16,8 +16,8 @@ const CommitsReport = () => {
     const fetch = async () => {
       const response = await DashboardService.getCommitsReportData();
       if (response) {
-        setCommitsData(response.data);
-        setChartData(dataChart(response.data));
+        setCommitsData(response);
+        setChartData(dataChart(response));
       }
     };
     fetch();
