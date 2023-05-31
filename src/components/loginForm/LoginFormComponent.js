@@ -13,7 +13,7 @@ const LoginForm = () => {
     event.preventDefault();
     const response = await loginService.login(username, pass);
     if (response.data.length) {
-      sessionStorage.setItem("user", btoa(JSON.stringify(response.data[0])));
+      localStorage.setItem("user", btoa(JSON.stringify(response.data[0])));
       setUsername("");
       setPass("");
       navigate("/");

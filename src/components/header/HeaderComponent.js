@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -12,6 +12,19 @@ import { IoIosNotificationsOutline } from "react-icons/io";
 import "./HeaderComponent.css";
 
 function HeaderComponent() {
+  const [isOpen, setIsOpen] = useState(false);
+  const btnRef = useRef();
+
+  const handleToggle = (event) => {
+    setIsOpen(!isOpen);
+  };
+
+  const handleClick = () => {
+    if (isOpen) {
+      btnRef.current.click();
+    }
+  };
+
   return (
     <React.Fragment>
       {["lg"].map((expand) => (
@@ -21,6 +34,8 @@ function HeaderComponent() {
           expand={expand}
           className="mb-3"
           fixed="top"
+          onToggle={handleToggle}
+          collapseOnSelect={true}
         >
           <Container fluid>
             <Navbar.Brand href="#">Ol Software</Navbar.Brand>
@@ -30,6 +45,7 @@ function HeaderComponent() {
                 <IoIosNotificationsOutline />
               </span>
               <Navbar.Toggle
+                ref={btnRef}
                 aria-controls={`offcanvasNavbar-expand-${expand}`}
               />
               <Navbar.Offcanvas
@@ -44,16 +60,28 @@ function HeaderComponent() {
                 </Offcanvas.Header>
                 <Offcanvas.Body>
                   <Nav className="justify-content-end flex-grow-1 pe-3">
-                    <NavLink to="/dashboard" className="nav-link">
+                    <NavLink
+                      onClick={handleClick}
+                      to="/dashboard"
+                      className="nav-link"
+                    >
                       <RxDashboard /> Dashboard
                     </NavLink>
-                    <NavLink to="/projects" className="nav-link">
+                    <NavLink
+                      onClick={handleClick}
+                      to="/projects"
+                      className="nav-link"
+                    >
                       <AiOutlineProject /> Lista de proyectos
                     </NavLink>
-                    <NavLink to="/users" className="nav-link">
+                    <NavLink
+                      onClick={handleClick}
+                      to="/users"
+                      className="nav-link"
+                    >
                       <BiUserCircle /> Lista de usuarios
                     </NavLink>
-                    <NavLink to="/" className="nav-link">
+                    <NavLink onClick={handleClick} to="/" className="nav-link">
                       <VscTypeHierarchySub /> Administrar roles
                     </NavLink>
                   </Nav>

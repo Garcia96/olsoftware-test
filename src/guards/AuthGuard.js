@@ -12,7 +12,7 @@ const AuthGuard = ({ component }) => {
   }, [component]);
 
   const checkUser = () => {
-    const user = sessionStorage.getItem("user");
+    const user = localStorage.getItem("user");
     if (!user) {
       navigate("/login");
     } else {
