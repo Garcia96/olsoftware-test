@@ -1,4 +1,4 @@
-.projects-container {
+.user-container {
   padding: 1rem;
   display: flex;
   flex-direction: column;
@@ -8,9 +8,4 @@
   display: flex;
   margin: auto;
   margin-top: 64px;
-}
-
-.new-project-container {
-  padding: 1rem;
-  display: flex;
 }

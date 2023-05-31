@@ -1,5 +1,3 @@
-import React from "react";
-
 function snakeCaseToCamelCaseMiddleware(data) {
   if (Array.isArray(data)) {
     return data.map((item) => snakeCaseToCamelCaseMiddleware(item));
@@ -22,7 +20,6 @@ function snakeCaseToCamelCaseMiddleware(data) {
 
 const snakeToCamelMiddleware = ({ data }) => {
   const transformedData = snakeCaseToCamelCaseMiddleware(data);
-  console.log(transformedData);
   return transformedData;
 };
 

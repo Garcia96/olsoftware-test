@@ -10,7 +10,11 @@ import AuthGuard from "../guards/AuthGuard";
 
 const Dashboard = React.lazy(() => import("./dashboard/DashboardPage"));
 const Projects = React.lazy(() => import("./projects/ProjectsPage"));
+const NewProject = React.lazy(() => import("./projects/NewProjectPage"));
+const EditProject = React.lazy(() => import("./projects/EditProjectPage"));
 const Users = React.lazy(() => import("./users/UsersPage"));
+const NewUser = React.lazy(() => import("./users/NewUserPage"));
+const EditUser = React.lazy(() => import("./users/EditUserPage"));
 
 const router = createBrowserRouter([
   {
@@ -42,10 +46,42 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "projects",
+        path: "projects/new",
+        element: (
+          <React.Suspense fallback={<>...</>}>
+            <AuthGuard component={<NewProject />} />
+          </React.Suspense>
+        ),
+      },
+      {
+        path: "projects/:id",
+        element: (
+          <React.Suspense fallback={<>...</>}>
+            <AuthGuard component={<EditProject />} />
+          </React.Suspense>
+        ),
+      },
+      {
+        path: "users",
         element: (
           <React.Suspense fallback={<>...</>}>
             <AuthGuard component={<Users />} />
+          </React.Suspense>
+        ),
+      },
+      {
+        path: "users/new",
+        element: (
+          <React.Suspense fallback={<>...</>}>
+            <AuthGuard component={<NewUser />} />
+          </React.Suspense>
+        ),
+      },
+      {
+        path: "users/:id",
+        element: (
+          <React.Suspense fallback={<>...</>}>
+            <AuthGuard component={<EditUser />} />
           </React.Suspense>
         ),
       },

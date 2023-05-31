@@ -1,0 +1,12 @@
+.custom-table > tbody > tr > td {
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.custom-table > tbody > tr > td > button {
+  margin: 2px;
+}
+
+.item-listviewed {
+  font-size: 14px;
+}
