@@ -6,20 +6,20 @@ import { Card } from "react-bootstrap";
 function LoginPage() {
   return (
     <React.Fragment>
-      <section className="login-container">
+      <section className="login-container container">
         <Card>
           <Card.Body>
             <h4 className="mb-4">Hola! Bienvenido a OL Software</h4>
             <LoginForm />
             <div className="extras">
-              <div class="form-check">
+              <div className="form-check">
                 <input
-                  class="form-check-input"
+                  className="form-check-input"
                   type="checkbox"
                   value=""
                   id="flexCheckDefault"
                 />
-                <label class="form-check-label" for="flexCheckDefault">
+                <label className="form-check-label" htmlFor="flexCheckDefault">
                   Recuerdame
                 </label>
               </div>

@@ -45,7 +45,7 @@ const CommitsReport = () => {
   };
 
   return (
-    <section className="report-container">
+    <section className="report-container container">
       <Card bg="primary" text="white" className="commits-card">
         <Card.Body>
           <Card.Title className="mb-4">Reporte de commits por mes</Card.Title>

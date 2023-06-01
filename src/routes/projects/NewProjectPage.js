@@ -22,7 +22,7 @@ const NewProjectPage = () => {
 
   return (
     <section>
-      <div className="projects-container">
+      <div className="projects-container container">
         <Alert
           variant={submitData?.error ? "danger" : "success"}
           show={submitData?.show}

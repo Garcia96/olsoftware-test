@@ -22,7 +22,7 @@ const EditUserPage = () => {
 
   return (
     <section>
-      <div className="user-container">
+      <div className="user-container container">
         <Alert
           variant={submitData?.error ? "danger" : "success"}
           show={submitData?.show}

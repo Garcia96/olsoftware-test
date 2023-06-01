@@ -38,7 +38,7 @@ const CpuReport = () => {
   };
 
   return (
-    <section className="report-container">
+    <section className="report-container container">
       <Card className="commits-card">
         <Card.Body>
           <Card.Title>Detalles del Servidor</Card.Title>

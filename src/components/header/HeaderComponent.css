@@ -1,4 +1,10 @@
 .notification {
-  font-size: 22px;
+  font-size: 24px;
   margin-right: 5px;
+  padding: 0;
+  color: black;
+}
+
+.nav-conainer {
+  display: flex;
 }

@@ -8,12 +8,17 @@ import { RxDashboard } from "react-icons/rx";
 import { BiUserCircle } from "react-icons/bi";
 import { AiOutlineProject } from "react-icons/ai";
 import { VscTypeHierarchySub } from "react-icons/vsc";
+import { Button } from "react-bootstrap";
 import { IoIosNotificationsOutline } from "react-icons/io";
+import { NotificationComponent } from "../notification/NotificationComponent";
 import "./HeaderComponent.css";
 
 function HeaderComponent() {
   const [isOpen, setIsOpen] = useState(false);
   const btnRef = useRef();
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(!show);
 
   const handleToggle = (event) => {
     setIsOpen(!isOpen);
@@ -39,11 +44,15 @@ function HeaderComponent() {
         >
           <Container fluid>
             <Navbar.Brand href="#">Ol Software</Navbar.Brand>
-            <div>
-              <span className="notification">
-                {" "}
+            <div className="nav-conainer">
+              <Button
+                variant="link"
+                className="notification"
+                onClick={handleClose}
+              >
                 <IoIosNotificationsOutline />
-              </span>
+              </Button>
+
               <Navbar.Toggle
                 ref={btnRef}
                 aria-controls={`offcanvasNavbar-expand-${expand}`}
@@ -91,6 +100,21 @@ function HeaderComponent() {
           </Container>
         </Navbar>
       ))}
+
+      <Offcanvas
+        show={show}
+        onHide={handleClose}
+        placement="end"
+        scroll
+        backdrop={false}
+      >
+        <Offcanvas.Header closeButton>
+          <Offcanvas.Title>Notificaciones</Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body>
+          <NotificationComponent />
+        </Offcanvas.Body>
+      </Offcanvas>
     </React.Fragment>
   );
 }

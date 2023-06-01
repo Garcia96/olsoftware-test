@@ -145,8 +145,8 @@ const UserFormComponent = (props) => {
             </Form.Group>
           </Row>
 
-          <div className="d-flex justify-content-evenly">
-            <Button type="submit" className="mr-2">
+          <div className="d-flex justify-content-end">
+            <Button type="submit" className="mx-2">
               Enviar
             </Button>
             <Button type="button" variant="secondary" onClick={handleCancel}>

@@ -16,7 +16,7 @@ function GeneralInfo() {
   }, []);
 
   return (
-    <section className="cards-container">
+    <section className="cards-container container">
       <div>
         <span>Proyectos</span>
         <p>{cardsInfo?.projects}</p>

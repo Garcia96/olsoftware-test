@@ -50,7 +50,7 @@ function UsersPage() {
         <Button className="new-button" onClick={handleOnClick}>
           Registrar Usuario
         </Button>
-        <div className="user-container">
+        <div className="user-container container">
           {usersData && (
             <CustomTableComponent
               data={usersData}

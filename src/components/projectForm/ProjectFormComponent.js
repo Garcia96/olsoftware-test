@@ -186,12 +186,14 @@ const ProjectFormComponent = (props) => {
               </Form.Select>
             </Form.Group>
           </Row>
-          <Button type="submit" className="mr-2">
-            Enviar
-          </Button>
-          <Button type="button" variant="secondary" onClick={handleCancel}>
-            Cancelar
-          </Button>
+          <div className="d-flex justify-content-end">
+            <Button type="submit" className="mx-2">
+              Enviar
+            </Button>
+            <Button type="button" variant="secondary" onClick={handleCancel}>
+              Cancelar
+            </Button>
+          </div>
         </Form>
       </Card.Body>
     </Card>

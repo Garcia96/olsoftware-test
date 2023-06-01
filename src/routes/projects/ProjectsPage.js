@@ -50,7 +50,7 @@ function ProjectsPage() {
         <Button className="new-button" onClick={handleOnClick}>
           Registrar Proyecto
         </Button>
-        <div className="projects-container">
+        <div className="projects-container container">
           {projectsData && (
             <CustomTableComponent
               data={projectsData}
