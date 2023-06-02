@@ -1,7 +1,7 @@
 import axios from "axios";
 import { snakeToCamelMiddleware } from "./snakeToCamelMiddleware";
 
-const baseUrl = "http://localhost:3004/projects";
+const baseUrl = process.env.REACT_APP_BASE_URL + "/projects";
 
 const getProjects = async () => {
   const data = await axios.get(baseUrl);
