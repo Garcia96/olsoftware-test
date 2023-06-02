@@ -7,10 +7,11 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import { useAppContext } from "../../services/provider";
 import * as UserService from "../../services/users";
 import * as ProjectService from "../../services/projects";
 
-const ProjectFormComponent = (props) => {
+const ProjectFormComponent = () => {
   const {
     register,
     handleSubmit,
@@ -21,6 +22,7 @@ const ProjectFormComponent = (props) => {
   const [users, setUsers] = useState();
   const navigate = useNavigate();
   const params = useParams();
+  const { user, dispatch } = useAppContext();
 
   useEffect(() => {
     fetchUsuarios();
@@ -74,21 +76,29 @@ const ProjectFormComponent = (props) => {
     const response = await ProjectService.newProject(data);
     if (response && response.id) {
       reset();
-      props.submitEvent({
-        error: false,
-        message: "Proyecto creado correctamente",
-      });
+      dispatchProject("Proyecto creado correctamente", false);
     }
   };
 
   const editProject = async (data) => {
-    const response = await ProjectService.editProject(data, params.id);
-    if (response && response.id) {
-      props.submitEvent({
-        error: false,
-        message: "Proyecto editado correctamente",
-      });
+    if (user.rol === 1) {
+      const response = await ProjectService.editProject(data, params.id);
+      if (response && response.id) {
+        dispatchProject("Proyecto editado correctamente", false);
+      }
+    } else {
+      dispatchProject("No tiene permiso para realizar esta operación", true);
     }
+  };
+
+  const dispatchProject = (message, error) => {
+    dispatch({
+      type: "ALERT",
+      value: {
+        error,
+        message,
+      },
+    });
   };
 
   const handleCancel = (event) => {

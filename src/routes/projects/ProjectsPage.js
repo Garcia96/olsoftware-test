@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import { CustomTableComponent } from "../../components/table/CustomTableComponent";
 import { ModalComponent } from "../../components/modal/ModalComponent";
+import { useAppContext } from "../../services/provider";
 import * as ProjectService from "../../services/projects";
 import "./ProjectsPage.css";
 
@@ -10,6 +11,7 @@ function ProjectsPage() {
   const [projectsData, setProjectsData] = useState(null);
   const [deleteId, setDeleteId] = useState("");
   const navigate = useNavigate();
+  const { user, dispatch } = useAppContext();
 
   useEffect(() => {
     fetch();
@@ -33,15 +35,32 @@ function ProjectsPage() {
 
   const handleDelete = (data) => {
     if (data) {
-      deleteUser();
+      if (user.rol === 1) {
+        deleteProject();
+      } else {
+        dispatch({
+          type: "ALERT",
+          value: {
+            error: true,
+            message: "No tiene permiso para realizar esta operación",
+          },
+        });
+      }
     }
     setDeleteId(null);
   };
 
-  const deleteUser = async () => {
+  const deleteProject = async () => {
     await ProjectService.deleteProject(deleteId);
     setDeleteId(null);
     fetch();
+    dispatch({
+      type: "ALERT",
+      value: {
+        error: false,
+        message: "Proyecto eliminado correctamente",
+      },
+    });
   };
 
   return (

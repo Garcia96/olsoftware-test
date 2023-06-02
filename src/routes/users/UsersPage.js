@@ -4,12 +4,14 @@ import Button from "react-bootstrap/Button";
 import { CustomTableComponent } from "../../components/table/CustomTableComponent";
 import * as UserService from "../../services/users";
 import { ModalComponent } from "../../components/modal/ModalComponent";
+import { useAppContext } from "../../services/provider";
 import "./UsersPage.css";
 
 function UsersPage() {
   const [usersData, setUsersData] = useState(null);
   const [deleteId, setDeleteId] = useState("");
   const navigate = useNavigate();
+  const { user, dispatch } = useAppContext();
 
   useEffect(() => {
     fetch();
@@ -33,7 +35,17 @@ function UsersPage() {
 
   const handleDelete = (data) => {
     if (data) {
-      deleteUser();
+      if (user.rol === 1) {
+        deleteUser();
+      } else {
+        dispatch({
+          type: "ALERT",
+          value: {
+            error: true,
+            message: "No tiene permiso para realizar esta operación",
+          },
+        });
+      }
     }
     setDeleteId(null);
   };
@@ -42,6 +54,13 @@ function UsersPage() {
     await UserService.deleteUser(deleteId);
     setDeleteId(null);
     fetch();
+    dispatch({
+      type: "ALERT",
+      value: {
+        error: false,
+        message: "Usuario eliminado correctamente",
+      },
+    });
   };
 
   return (

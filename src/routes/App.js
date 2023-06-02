@@ -7,6 +7,8 @@ import {
 import { LoginPage } from "./login/LoginPage";
 import { HomePage } from "./home/HomePage";
 import AuthGuard from "../guards/AuthGuard";
+import { Provider } from "../services/provider";
+import { ToastComponent } from "../components/modal/ToastComponent";
 
 const Dashboard = React.lazy(() => import("./dashboard/DashboardPage"));
 const Projects = React.lazy(() => import("./projects/ProjectsPage"));
@@ -90,7 +92,12 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <Provider>
+      <RouterProvider router={router} />
+      <ToastComponent />
+    </Provider>
+  );
 }
 
 export default App;

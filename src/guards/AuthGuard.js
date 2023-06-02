@@ -12,7 +12,7 @@ const AuthGuard = ({ component }) => {
   }, [component]);
 
   const checkUser = () => {
-    const user = localStorage.getItem("user");
+    const user = localStorage.getItem("OLSOFTWARELOGIN");
     if (!user) {
       navigate("/login");
     } else {

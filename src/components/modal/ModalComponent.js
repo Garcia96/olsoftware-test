@@ -28,7 +28,7 @@ const ModalComponent = (props) => {
       <Modal.Body>¿Está seguro de eliminar este registro?</Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={handleClose}>
-          Close
+          Cancelar
         </Button>
         <Button variant="primary" onClick={handleDelete}>
           Eliminar
